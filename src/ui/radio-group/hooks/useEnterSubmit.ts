@@ -17,6 +17,7 @@ export const useEnterSubmit = ({ onChange, option }: UseEnterSubmit) => {
 		const handleEnterKeyDown = (event: KeyboardEvent) => {
 			if (document.activeElement === optionHtml && event.key === 'Enter') {
 				onChange?.(option);
+				event.preventDefault();
 			}
 		};
 
@@ -27,4 +28,5 @@ export const useEnterSubmit = ({ onChange, option }: UseEnterSubmit) => {
 			optionHtml.removeEventListener('keydown', handleEnterKeyDown);
 		};
 	}, [onChange, option]);
+	return optionRef;
 };
